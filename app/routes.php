@@ -15,3 +15,6 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+Route::get('/ManageParticipants', function(){
+	return View::make('ManageParticipants');
+});
