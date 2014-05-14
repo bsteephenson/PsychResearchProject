@@ -22,20 +22,58 @@ The participant will then pick adjectives that describe the other person. He or 
 
 #The Plan
 
-Participants Table
+###Participants Table
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Authentication_Key</th>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>Bob Smith</td>
+    <td>randomlyGeneratedKeyUsedToLogin</td>
+  </tr>
+</table>
 
-ID | Name | Authentication_Key
+###Outcomes Table
 
--- | ---- | ------------------
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Chooser</th>
+    <th>Chosen</th>
+    <th>O</th>
+    <th>C</th>
+    <th>E</th>
+    <th>A</th>
+    <th>N</th>
+  </tr>
+  <tr>
+    <td>47</td>
+    <td>23</td>
+    <td>23</td>
+    <td>0</td>
+    <td>25</td>
+    <td>50</td>
+    <td>75</td>
+    <td>100</td>
+  </tr>
+  <tr>
+    <td>48</td>
+    <td>23</td>
+    <td>27</td>
+    <td>100</td>
+    <td>75</td>
+    <td>50</td>
+    <td>35</td>
+    <td>0</td>
+  </tr>
+</table>
 
-23 | Bob Smith | randomlyGeneratedKeyUsedToLogin
+==================
+#Misc
 
-Outcomes Table
+Although what I am about to write will probably not benefit anyone else, I am using this project as a means to get better at using Git and GitHub. This will actually be my first real project using a version control, so this is meant to be a learning experience.
 
-ID | Chooser | Chosen | O | C | E | A | N
-
--- | ------- | ------ | - | - | - | - | -
-
-47 | 23      | 23     | 25 | 50 | 75 | 0 | 100
-
-47 | 23      | 27     | 50 | 25 | 50 | 100 | 0
+This will also be my first real project using Laravel. This is going to embarrassing =D
