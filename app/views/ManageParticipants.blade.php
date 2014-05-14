@@ -13,7 +13,7 @@
 @section('javascript')
 	function populateTable(){
 		$.ajax({
-    	url : "ManageParticipants/getParticipants",
+    	url : "all-participants",
     	cache : false,
     	success : function(jsonStuff){
     		$('body').append(jsonStuff);
@@ -29,8 +29,9 @@
 		$('#submit').on('click', function(){
 			//push to db
 			$.ajax({
-		    	url : "ManageParticipants/createParticipant",
-		    	data : {name: $('#name').val(), key : $('#key').val()},
+		    	type : "POST",
+		    	url : "create-participant",
+		    	data : {'name' : $('#name').val(), 'key' : $('#key').val()},
 		    	cache : false,
 		    	success : function(jsonStuff){
 		    		$('body').append(jsonStuff);
@@ -41,6 +42,8 @@
 			//empty the form
 
 			//repopulate table
+
+			populateTable();
 
 			return false;
 		})
