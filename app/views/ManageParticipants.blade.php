@@ -12,11 +12,17 @@
 
 @section('javascript')
 	function populateTable(){
+		$('table').html('');
+		$('table').append('<tr><th>Name</th><th>Key</th><th>Compliance</th></tr>');
 		$.ajax({
     	url : "all-participants",
     	cache : false,
-    	success : function(jsonStuff){
-    		$('body').append(jsonStuff);
+    	success : function(arr){
+    		for (var i = arr.length - 1; i >= 0; i--) {
+    			$row = '<tr><td>' + arr[i].name + '</td><td>' + arr[i].key + '</td><td>' + arr[i].Compliance + '</td></tr>';
+
+    			$('table').append($row);
+    		};
     	}
     	});
 	}
@@ -34,13 +40,14 @@
 		    	data : {'name' : $('#name').val(), 'key' : $('#key').val()},
 		    	cache : false,
 		    	success : function(jsonStuff){
-		    		$('body').append(jsonStuff);
+		    		
 				}
 			});
 			//say success
 
 			//empty the form
-
+			$('#name').val('');
+			$('#key').val('');
 			//repopulate table
 
 			populateTable();
@@ -63,11 +70,7 @@
 	</form>
 
 	<table>
-		<tr>
-			<th>Name</th>
-			<th>Key</th>
-			<th>Compliance</th>
-		</tr>
+
 	</table>
 
 @stop
