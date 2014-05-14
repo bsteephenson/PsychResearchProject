@@ -48,6 +48,7 @@ The participant will then pick adjectives that describe the other person. He or 
     <th>E</th>
     <th>A</th>
     <th>N</th>
+    <th>How_Well_You_Know_The_Person</th>
   </tr>
   <tr>
     <td>47</td>
@@ -58,6 +59,7 @@ The participant will then pick adjectives that describe the other person. He or 
     <td>50</td>
     <td>75</td>
     <td>100</td>
+    <td></td>
   </tr>
   <tr>
     <td>48</td>
@@ -68,6 +70,7 @@ The participant will then pick adjectives that describe the other person. He or 
     <td>50</td>
     <td>35</td>
     <td>0</td>
+    <td>75</td>
   </tr>
 </table>
 
