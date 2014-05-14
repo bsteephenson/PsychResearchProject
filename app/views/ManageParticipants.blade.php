@@ -1,11 +1,21 @@
 @extends('layouts.master')
 
-@section('sidebar')
-    @parent
-
-    <p>This is appended to the master sidebar.</p>
+@section('title')
+  The title
 @stop
 
-@section('content')
-    <p>This is my body content.</p>
+@section('css')
+  body{
+    font-size:140px;
+  }
+@stop
+
+@section('javascript')
+  $(document).ready(function(){
+    alert("worketh?");
+  });
+@stop
+
+@section('body')
+  The body
 @stop
