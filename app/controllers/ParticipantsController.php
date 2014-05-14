@@ -26,6 +26,12 @@ class ParticipantsController extends BaseController{
 		$newParticipant->key = $key;
 		$newParticipant->save();
 	}
+	public function postEditParticipant(){
+		//todo
+	}
+	public function postDeleteParticipant(){
+		//todo
+	}
 
 }
 
