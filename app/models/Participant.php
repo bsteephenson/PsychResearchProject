@@ -3,10 +3,10 @@
 class Participant extends Eloquent{
 	protected $table = 'participants';
 
-	public didDoSelfInventory($id){
+	public function didDoSelfInventory($id){
 		return PersonalityInventory::where('choser', '=' , $id)->where('chosen', '=', $id)->count();
 	}
-	public getNumberOfOtherInventories($id){
+	public function getNumberOfOtherInventories($id){
 		return PersonalityInventory::where('choser', '=' , $id)->where('chosen', '!=', $id)->count();
 	}
 }
