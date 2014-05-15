@@ -5,9 +5,16 @@
 @stop
 
 @section('css')
-  body{
-    font-size:10px;
-  }
+	body{
+		font-size:10px;
+	}
+	.formField{
+		border-style: solid;
+		border-width: 1px;
+		padding: 10px;
+		width: 150px;
+		float: left;
+	}
 @stop
 
 @section('javascript')
@@ -21,9 +28,10 @@
 {{ Form::open(array('action' => 'InventoryController@postInventoryForm'))}}
 
 @foreach($list as $field)
+	<div class="formField">
 	{{Form::checkbox($field)}}
 	{{Form::label($field)}}
-	<br />
+	</div>
 @endforeach
 {{Form::submit('Submit')}}		
 {{ Form::close() }}
