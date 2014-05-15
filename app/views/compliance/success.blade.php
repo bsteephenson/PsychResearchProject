@@ -17,10 +17,5 @@
 @stop
 
 @section('body')
-
-{{ Form::open(array('action' => 'ParticipantsController@postCreate'))}}
-{{Form::text('name', '',array('placeholder' => 'Name'))}}
-{{Form::text('key', $key)}}
-{{Form::submit('Submit')}}
-{{ Form::close() }}
+success!!!
 @stop

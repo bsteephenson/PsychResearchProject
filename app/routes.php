@@ -18,3 +18,4 @@ Route::get('/', function()
 
 
 Route::controller('participants', 'ParticipantsController');
+Route::controller('compliance', 'ComplianceController');

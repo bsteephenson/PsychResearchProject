@@ -17,10 +17,9 @@
 @stop
 
 @section('body')
-
-{{ Form::open(array('action' => 'ParticipantsController@postCreate'))}}
-{{Form::text('name', '',array('placeholder' => 'Name'))}}
-{{Form::text('key', $key)}}
+initial content
+{{ Form::open(array('action' => 'ComplianceController@postInitial'))}}
+{{Form::text('key', '', array('placeholder'=>'Enter Key Here'))}}
 {{Form::submit('Submit')}}
 {{ Form::close() }}
 @stop
