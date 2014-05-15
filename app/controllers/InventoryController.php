@@ -21,9 +21,10 @@ class InventoryController extends BaseController {
 			'imaginative','creative','original','curious'
 			);
 
+
 		//todo : randomize list
 		if(Session::has('key')){
-			return View::make('inventory.index', array('list' => $arrayOfAdjectives, choser));
+			return View::make('inventory.index', array('list' => $arrayOfAdjectives));
 		}
 	}
 
@@ -74,6 +75,20 @@ class InventoryController extends BaseController {
 			- Input::get('comfortable')
 			- Input::get('unemotional');
 		
+		$choser = Session::get('choser');
+		$chosen = Session::get('chosen');
+
+		$row = new PersonalityInventory;
+		
+		$row->choserID = $choser;
+		$row->chosenID = $chosen;
+		$row->o = $o;
+		$row->c = $c;
+		$row->e = $e;
+		$row->a = $a;
+		$row->n = $n;
+
+		$row->save();
 
 	}
 

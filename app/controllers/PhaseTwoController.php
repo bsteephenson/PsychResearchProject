@@ -22,8 +22,11 @@ class PhaseTwoController extends BaseController{
 		$selfCount = PersonalityInventory::where('choserID', '=', $id)->where('chosenID', '=', $id)->count();
 		$otherCount = PersonalityInventory::where('choserID', '=', $id)->where('chosenID', '!=', $id)->count();
 
+		Session::put('choser', $id);
+
 		if($selfCount != 1){
-			return 'do self inv';
+			Session::put('chosen', $id);
+			return Redirect::action('InventoryController@getInventoryPage');
 		}
 		if($otherCount <= 3){
 			return 'go to other person choser';
