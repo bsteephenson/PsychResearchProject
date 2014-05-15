@@ -20,6 +20,7 @@
 @stop
 
 @section('body')
+{{link_to_action('ParticipantsController@getCreate', 'Add A Participant')}}
 <table>
   <tr><th>Name</th><th>Key</th><th>Compliance</th><th>Actions</th></tr>
   @foreach($list as $person)
