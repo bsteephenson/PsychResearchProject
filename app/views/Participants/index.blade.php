@@ -6,7 +6,10 @@
 
 @section('css')
   body{
-    font-size:140px;
+    font-size:20px;
+  }
+  td{
+    width : 20%;
   }
 @stop
 
@@ -17,5 +20,15 @@
 @stop
 
 @section('body')
-
+<table>
+  <tr><th>Name</th><th>Key</th><th>Compliance</th><th>Actions</th></tr>
+  @foreach($list as $person)
+    <tr>
+      <td>{{$person->name}}</td>
+      <td>{{$person->key}}</td>
+      <td>{{$person->compliance}}</td>
+      <td>{{link_to_action('ParticipantsController@getEdit', 'Edit', array('id' => $person->id))}}</td>
+    </tr>
+  @endforeach
+</table>
 @stop
