@@ -12,9 +12,23 @@ class PhaseTwoController extends BaseController{
 
 		if($count == 1){
 			Session::put('key', $key);
-			Session::put('chosen', $currentPersonID);
-			return Redirect::action('InventoryController@getInventoryPage');
+			Session::put('id', $currentPersonID);
+			return $this->getDecideWhereToGo();
 		}
 		return 'failed';
+	}
+	public function getDecideWhereToGo(){
+		$id = Session::get('id');
+		$selfCount = PersonalityInventory::where('choserID', '=', $id)->where('chosenID', '=', $id)->count();
+		$otherCount = PersonalityInventory::where('choserID', '=', $id)->where('chosenID', '!=', $id)->count();
+
+		if($selfCount != 1){
+			return 'do self inv';
+		}
+		if($otherCount <= 3){
+			return 'go to other person choser';
+		}
+		return 'something else';
+
 	}
 }

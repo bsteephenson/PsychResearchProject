@@ -23,7 +23,7 @@ class InventoryController extends BaseController {
 
 		//todo : randomize list
 		if(Session::has('key')){
-			return View::make('inventory.index', array('list' => $arrayOfAdjectives));
+			return View::make('inventory.index', array('list' => $arrayOfAdjectives, choser));
 		}
 	}
 
