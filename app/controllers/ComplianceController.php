@@ -28,6 +28,9 @@ class ComplianceController extends BaseController{
         $key = Input::get('key');
         $count = Participant::where('key', '=', $key)->count();
         if($count == 1){
+            $person = Participant::where('key', '=', $key)->first();
+            $person->compliance = TRUE;
+            $person->save();
             return Redirect::action('ComplianceController@getSuccess');
         }
         else{
