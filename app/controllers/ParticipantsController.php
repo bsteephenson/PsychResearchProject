@@ -2,7 +2,7 @@
 
 class ParticipantsController extends BaseController{
 	public function getIndex(){
-		return View::make('ManageParticipants');
+		return View::make('participants.index', array('list' => Participant::all()));
 	}
 
 	public function getAllParticipants(){
@@ -17,22 +17,23 @@ class ParticipantsController extends BaseController{
 
 	}
 
-	public function postCreateParticipant(){
-		$name = Input::get('name');
-		$key = Input::get('key');
+	// public function postCreateParticipant(){
+	// 	$name = Input::get('name');
+	// 	$key = Input::get('key');
+	//
+	// 	$newParticipant = new Participant;
+	// 	$newParticipant->name = $name;
+	// 	$newParticipant->key = $key;
+	// 	$newParticipant->save();
+	// }
+public function getEdit(){}
+public function postEdit(){}
 
-		$newParticipant = new Participant;
-		$newParticipant->name = $name;
-		$newParticipant->key = $key;
-		$newParticipant->save();
-	}
-	public function postEditParticipant(){
-		//todo
-	}
-	public function postDeleteParticipant(){
-		//todo
-	}
+public function getCreate(){}
+public function postCreate(){}
 
+public function getDelete(){}
+public function postDelete(){}
 }
 
 ?>
