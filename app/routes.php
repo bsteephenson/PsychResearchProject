@@ -19,3 +19,4 @@ Route::get('/', function()
 
 Route::controller('participants', 'ParticipantsController');
 Route::controller('compliance', 'ComplianceController');
+Route::controller('inventory', 'InventoryController');
