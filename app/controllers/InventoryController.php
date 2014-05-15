@@ -90,6 +90,8 @@ class InventoryController extends BaseController {
 
 		$row->save();
 
+		return Redirect::action('PhaseTwoController@getDecideWhereToGo');
+
 	}
 
 }

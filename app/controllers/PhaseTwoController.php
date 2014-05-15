@@ -24,14 +24,29 @@ class PhaseTwoController extends BaseController{
 
 		Session::put('choser', $id);
 
-		if($selfCount != 1){
+		if($selfCount < 1){
 			Session::put('chosen', $id);
 			return Redirect::action('InventoryController@getInventoryPage');
 		}
 		if($otherCount <= 3){
-			return 'go to other person choser';
+			return $this->getAnotherPerson();
 		}
 		return 'something else';
 
+	}
+	public function getAnotherPerson(){
+		$person = Participant::orderBy(DB::raw('RAND()'))->get()->first()->name;
+		Session::put('tempName', $person);
+		return View::make('phasetwo.pickPerson', array('person' => $person));
+	}
+	public function postGetNewPerson(){
+		return $this->getAnotherPerson();
+	}
+	public function postKnowThisPerson(){
+		$name = Session::get('tempName');
+		$otherID = Participant::where('name','=', $name)->first()->id;
+
+		Session::put('chosen', $otherID);
+		return Redirect::action('InventoryController@getInventoryPage');
 	}
 }
