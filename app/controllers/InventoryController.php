@@ -2,7 +2,8 @@
 
 class InventoryController extends BaseController {
 	//makes the page given the choser and the chosen
-	public function getIndex(){
+	public function getInventoryPage(){
+
 		$arrayOfAdjectives = array(
 			'loner', 'quiet', 'passive', 'reserved',
 			'joiner', 'talkative', 'active', 'affectionable',
@@ -21,8 +22,9 @@ class InventoryController extends BaseController {
 			);
 
 		//todo : randomize list
-
-		return View::make('inventory.index', array('list' => $arrayOfAdjectives));
+		if(Session::has('key')){
+			return View::make('inventory.index', array('list' => $arrayOfAdjectives));
+		}
 	}
 
 	//creates a new row in db with the form data, redirects somewhere depending on other things..
@@ -72,7 +74,7 @@ class InventoryController extends BaseController {
 			- Input::get('comfortable')
 			- Input::get('unemotional');
 		
-		
+
 	}
 
 }
