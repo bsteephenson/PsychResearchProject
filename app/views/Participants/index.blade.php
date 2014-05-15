@@ -28,7 +28,8 @@
       <td>{{$person->name}}</td>
       <td>{{$person->key}}</td>
       <td>{{$person->compliance}}</td>
-      <td>{{link_to_action('ParticipantsController@getEdit', 'Edit', array('id' => $person->id))}}</td>
+      <td>{{link_to_action('ParticipantsController@getEdit', 'Edit', array('id' => $person->id))}} |
+      {{link_to_action('ParticipantsController@getDelete', 'Delete', array('id' => $person->id))}}</td>
     </tr>
   @endforeach
 </table>

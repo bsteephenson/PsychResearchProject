@@ -6,7 +6,7 @@
 
 @section('css')
   body{
-    font-size:140px;
+    font-size:40px;
   }
 @stop
 
@@ -18,4 +18,9 @@
 
 @section('body')
 
+{{ Form::open(array('action' => 'ParticipantsController@postCreate'))}}
+{{Form::text('name', '',array('placeholder' => 'Name'))}}
+{{Form::text('key', $key)}}
+{{Form::submit('Submit')}}
+{{ Form::close() }}
 @stop
