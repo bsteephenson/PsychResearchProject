@@ -17,9 +17,9 @@
 @stop
 
 @section('body')
-
+Login
 {{ Form::open(array('action' => 'SessionController@postLogin'))}}
-{{Form::text('key', '',array('placeholder' => 'Enter your key here'))}}
+{{Form::text('key', '', array('placeholder'=>'Enter Key Here'))}}
 {{Form::submit('Submit')}}
 {{ Form::close() }}
 @stop
