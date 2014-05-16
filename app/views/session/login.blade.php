@@ -18,7 +18,7 @@
 
 @section('body')
 
-{{ Form::open(array('action' => 'PhaseTwoController@postLogin'))}}
+{{ Form::open(array('action' => 'SessionController@postLogin'))}}
 {{Form::text('key', '',array('placeholder' => 'Enter your key here'))}}
 {{Form::submit('Submit')}}
 {{ Form::close() }}

@@ -21,3 +21,4 @@ Route::controller('participants', 'ParticipantsController');
 Route::controller('compliance', 'ComplianceController');
 Route::controller('inventory', 'InventoryController');
 Route::controller('phasetwo', 'PhaseTwoController');
+Route::controller('session', 'SessionController');
