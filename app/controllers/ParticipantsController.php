@@ -35,10 +35,14 @@ public function postEdit(){
 	$name = Input::get('name');
 	$key = Input::get('key');
 	$id = Input::get('id');
+	$email = Input::get('email');
+	$other_information = Input::get('other_information');
 
 	$newParticipant = Participant::find($id);
 	$newParticipant->name = $name;
 	$newParticipant->key = $key;
+	$newParticipant->email = $email;
+	$newParticipant->other_information = $other_information;
 	$newParticipant->save();
 
 	return Redirect::action('ParticipantsController@getIndex');
@@ -50,10 +54,15 @@ public function getCreate(){
 public function postCreate(){
 		$name = Input::get('name');
 		$key = Input::get('key');
-
+		$email = Input::get('email');
+		$other_information = Input::get('other_information');
+		
 		$newParticipant = new Participant;
 		$newParticipant->name = $name;
 		$newParticipant->key = $key;
+		$newParticipant->email = $email;
+		$newParticipant->other_information = $other_information;
+		
 		$newParticipant->save();
 		return Redirect::action('ParticipantsController@getIndex');
 }

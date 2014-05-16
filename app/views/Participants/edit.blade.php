@@ -21,7 +21,12 @@
 {{Form::open(array('action' => 'ParticipantsController@postEdit'))}}
 {{Form::hidden('id', $person->id)}}
 {{Form::text('name', $person->name)}}
-{{Form::text('key', $person->key)}}{{Form::submit('Submit')}}
+{{Form::text('key', $person->key)}}
+{{Form::text('email', $person->email)}}
+{{Form::text('other_information', $person->other_information)}}
+
+
+{{Form::submit('Submit')}}
 
 {{Form::close()}}
 @stop

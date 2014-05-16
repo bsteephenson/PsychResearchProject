@@ -19,7 +19,7 @@
 @section('body')
 {{Form::open(array('action' => 'ParticipantsController@postDelete'))}}
 {{Form::hidden('id', $person->id)}}
-{{Form::label('Confirm you want to delete ' . $person->name)}}
+{{Form::label('Confirm you want to delete \'' . $person->name . '\'')}}
 {{Form::submit('Confirm')}}
 {{Form::close()}}
 @stop
