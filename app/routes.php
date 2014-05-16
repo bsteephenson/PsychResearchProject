@@ -16,9 +16,11 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-
 Route::controller('participants', 'ParticipantsController');
-Route::controller('compliance', 'ComplianceController');
-Route::controller('inventory', 'InventoryController');
-Route::controller('phasetwo', 'PhaseTwoController');
+
+Route::group(array('before' => 'checkIfLoggedIn'), function(){
+	Route::controller('compliance', 'ComplianceController');
+	Route::controller('inventory', 'InventoryController');
+	Route::controller('phasetwo', 'PhaseTwoController');
+});
 Route::controller('session', 'SessionController');

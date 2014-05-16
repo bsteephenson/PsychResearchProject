@@ -31,7 +31,7 @@ class PhaseTwoController extends BaseController{
 		$name = Session::get('tempName');
 		$otherID = Participant::where('name','=', $name)->first()->id;
 
-		Session::put('chosen', $otherID);
+		Session::flash('chosen', $otherID);
 		return Redirect::action('InventoryController@getInventoryPage');
 	}
 }

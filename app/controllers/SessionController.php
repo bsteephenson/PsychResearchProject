@@ -14,9 +14,25 @@ class SessionController extends BaseController{
 			Session::put('key', $key);
 			Session::put('id', $currentPersonID);
 			
+			return $this->getDecideWhichActionToGoTo();
+		}
+		return $this->getLogin();
+	}
+	public function getLogout(){
+		Session::forget('key');
+		return Redirect::action('SessionController@getLogin');
+
+	}
+
+	//decided whether to send a logged in user to the compliance page or to the phaseTwo things
+	public function getDecideWhichActionToGoTo(){
+		$currentStage = 1;
+		if($currentStage == 1){
+			return Redirect::action('ComplianceController@getDetails');
+		}
+		else if($currentStage == 2){
+			//stage two surveys
 			return Redirect::action('PhaseTwoController@getDecideWhereToGo');
 		}
-		return $this->getIndex();
 	}
-	public function getLogout(){}
 }

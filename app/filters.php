@@ -22,6 +22,13 @@ App::after(function($request, $response)
 	//
 });
 
+
+Route::filter('checkIfLoggedIn', function(){
+	if(!Session::has('key')){
+		return Redirect::action('SessionController@getLogin');
+	}
+});
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters
