@@ -6,20 +6,25 @@
 
 @section('css')
   body{
-    font-size:40px;
+    font-size:20px;
   }
+  .btn{
+  	width: 25%;
+  	margin-left: 37.5%;
+  	margin-right: 37.5%;
+	}
+
 @stop
 
 @section('javascript')
-  $(document).ready(function(){
-    //alert("worketh?");
-  });
+  $('#logout').hide();
+  $('input[type="text"]').focus();
 @stop
 
 @section('body')
-Login
+
 {{ Form::open(array('action' => 'SessionController@postLogin'))}}
-{{Form::text('key', '', array('placeholder'=>'Enter Key Here'))}}
+{{Form::text('key', '', ['placeholder' => 'Enter Key Here', 'class' => 'form-control'])}}
 {{Form::submit('Submit')}}
 {{ Form::close() }}
 @stop

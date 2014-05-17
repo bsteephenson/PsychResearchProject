@@ -6,10 +6,11 @@
 
 @section('css')
   body{
-    font-size:20px;
+    font-size:10px;
   }
+
   td{
-    width : 15%;
+    width : 10%;    
   }
 @stop
 

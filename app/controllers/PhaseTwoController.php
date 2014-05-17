@@ -8,30 +8,48 @@ class PhaseTwoController extends BaseController{
 		$otherCount = PersonalityInventory::where('choserID', '=', $id)->where('chosenID', '!=', $id)->count();
 
 		Session::put('choser', $id);
+		
 
 		if($selfCount < 1){
 			Session::put('chosen', $id);
-			return Redirect::action('InventoryController@getInventoryPage');
+			Session::put('step', 1);
+			Session::flash('cameFromRedirect', true);
+			return View::make('phasetwo.instructions', array('numberOfSteps'=>9, 'stepNumber'=>1));
+
 		}
-		if($otherCount <= 3){
-			return $this->getAnotherPerson();
+		if($otherCount < 3){
+			Session::put('step', (2*$otherCount) + 3);
+			return Redirect::action('PhaseTwoController@getAnotherPerson');
 		}
-		return 'something else';
+		if($otherCount >= 3){
+			return Redirect::action('PhaseTwoController@getSuccess');
+		}
 
 	}
 	public function getAnotherPerson(){
-		$person = Participant::orderBy(DB::raw('RAND()'))->get()->first()->name;
-		Session::put('tempName', $person);
-		return View::make('phasetwo.pickPerson', array('person' => $person));
+		$alreadyPicked = true;
+		while($alreadyPicked){
+			$person = Participant::orderBy(DB::raw('RAND()'))->get()->first();
+			if(PersonalityInventory::where('chosenID','=', $person->id)->where('choserID', '=', Session::get('choser'))->count() < 1){
+				$alreadyPicked = 0;
+			}
+		}
+		$personName = $person->name;
+		Session::put('tempName', $personName);
+		return View::make('phasetwo.pickPerson', array('person' => $personName, 'numberOfSteps' => 9, 'stepNumber' => Session::get('step')));
 	}
 	public function postGetNewPerson(){
-		return $this->getAnotherPerson();
+		return Redirect::action('PhaseTwoController@getAnotherPerson');
 	}
 	public function postKnowThisPerson(){
 		$name = Session::get('tempName');
 		$otherID = Participant::where('name','=', $name)->first()->id;
 
-		Session::flash('chosen', $otherID);
+		Session::put('chosen', $otherID);
+		Session::flash('cameFromRedirect', true);
 		return Redirect::action('InventoryController@getInventoryPage');
+	}
+	public function getSuccess(){
+		return View::make('phasetwo.success', ['numberOfSteps' => 9, 'stepNumber' => 9]);
 	}
 }

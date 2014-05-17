@@ -8,15 +8,18 @@ class SessionController extends BaseController{
 		$key = Input::get('key');
 		$count = Participant::where('key', '=', $key)->count();
 
-		$currentPersonID = Participant::where('key', '=', $key)->first()->id;
 
 		if($count == 1){
+		$currentPersonID = Participant::where('key', '=', $key)->first()->id;
+
 			Session::put('key', $key);
 			Session::put('id', $currentPersonID);
 			
 			return $this->getDecideWhichActionToGoTo();
 		}
-		return $this->getLogin();
+		else{
+			return $this->getLogin();			
+		}
 	}
 	public function getLogout(){
 		Session::forget('key');
@@ -26,7 +29,10 @@ class SessionController extends BaseController{
 
 	//decided whether to send a logged in user to the compliance page or to the phaseTwo things
 	public function getDecideWhichActionToGoTo(){
-		$currentStage = 1;
+		if(!Session::has('key')){
+			return Redirect::action('SessionController@getLogin');
+		}
+		$currentStage = 2;
 		if($currentStage == 1){
 			return Redirect::action('ComplianceController@getDetails');
 		}

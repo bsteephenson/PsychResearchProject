@@ -4,6 +4,10 @@ class InventoryController extends BaseController {
 	//makes the page given the choser and the chosen
 	public function getInventoryPage(){
 
+		if(!Session::has('cameFromRedirect')){
+			return Redirect::action('SessionController@getDecideWhichActionToGoTo');
+		}
+
 		$arrayOfAdjectives = array(
 			'loner', 'quiet', 'passive', 'reserved',
 			'joiner', 'talkative', 'active', 'affectionable',
@@ -24,7 +28,9 @@ class InventoryController extends BaseController {
 
 		//todo : randomize list
 		if(Session::has('key')){
-			return View::make('inventory.index', array('list' => $arrayOfAdjectives));
+			return View::make('inventory.index', array('list' => $arrayOfAdjectives, 
+				'numberOfSteps' => 9, 'stepNumber' => Session::get('step') + 1, 'name' => Session::get('tempName'),
+				 'choser' => Session::get('choser'), 'chosen' => Session::get('chosen')));
 		}
 	}
 
@@ -88,6 +94,10 @@ class InventoryController extends BaseController {
 		$row->a = $a;
 		$row->n = $n;
 
+
+		if(Input::has('howWellKnown')){
+			$row->how_well_you_know_the_person = Input::get('howWellKnown');
+		}
 		$row->save();
 
 		return Redirect::action('PhaseTwoController@getDecideWhereToGo');

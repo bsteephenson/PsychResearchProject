@@ -6,8 +6,14 @@
 
 @section('css')
   body{
-    font-size:40px;
+    font-size:50px;
+    text-align: center;
   }
+	.btn{
+		width:50%;
+		margin-left : 25%;
+		margin-right: 25%;
+	}
 @stop
 
 @section('javascript')
@@ -19,12 +25,13 @@
 @section('body')
 {{$person}}
 <br />
-{{ Form::open(array('action' => 'PhaseTwoController@postGetNewPerson'))}}
-{{Form::submit('I do not know this person')}}
-{{ Form::close() }}
+
 
 {{ Form::open(array('action' => 'PhaseTwoController@postKnowThisPerson'))}}
-{{Form::submit('I do know this person')}}
+{{Form::submit('I DO know this person')}}
 {{ Form::close() }}
 
+{{ Form::open(array('action' => 'PhaseTwoController@postGetNewPerson'))}}
+{{Form::submit('I DO NOT know this person')}}
+{{ Form::close() }}
 @stop

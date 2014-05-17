@@ -29,6 +29,7 @@ Route::filter('checkIfLoggedIn', function(){
 	}
 });
 
+
 /*
 |--------------------------------------------------------------------------
 | Authentication Filters

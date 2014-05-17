@@ -13,7 +13,7 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return Redirect::action('SessionController@getDecideWhichActionToGoTo');
 });
 
 Route::controller('participants', 'ParticipantsController');
