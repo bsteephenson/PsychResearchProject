@@ -1,6 +1,8 @@
 PsychResearchProject
 ====================
 
+NOTE: I started this off with the hopes of writing pretty code with good version control practices. However, the need to deploy as soon as possible seemed more important. Please don't judge me by my ugly code.
+
 A website for data collection for a psychology research project
 
 ====================
